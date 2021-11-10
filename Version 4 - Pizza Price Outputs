@@ -1,0 +1,11 @@
+ #Pizzas Menu Label
+    MenuLbl = Label(NewWind, text = "PIZZA ORDER", font = 'Calibri 13', bg = '#ffe09c')
+    MenuLbl.place(x = 10, y = 130)
+
+    #Pizza 1 Output and price
+    Piz1Out = Entry(NewWind, width = 25, font = 'Calibri 12')
+    Piz1Out.place(x = 30, y = 170)
+    Piz1Out.insert(END, str(clicked.get()))
+
+    PizPriceOut = Entry(NewWind, width = 10, font = 'Calibri 12')
+    PizPriceOut.place(x = 260, y = 170)
