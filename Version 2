@@ -1,0 +1,27 @@
+#New Window to show output
+def Order():
+    #Creates new window
+    NewWind = Toplevel(window)
+    NewWind.geometry('890x550')
+    NewWind.configure(bg = '#ffe09c')
+    NewWind.resizable(0, 0)
+
+    #Prints Title labels on new window
+    PurgName2 = Label(NewWind, text = "Purgatory's Pizza", font = "Calibri 15", bg = '#ffe09c')
+    PurgName2.place(x = 20, y = 12)
+
+    #Outputs order details
+    invDate = datetime.now()
+    payDate = invDate + timedelta(30)
+    InvDate = Label(NewWind, text = "Invoice Date: {}/{}/{}".format(invDate.day, invDate.month, invDate.year), font = 'Lato 12', bg = '#ffe37d', fg = 'black')
+    InvDate.place(x = 640, y = 3)
+
+
+
+
+
+#Button for continuing order
+btn = Button(window, text = "Proceed", font = 'Calibri 13', width = 17, height = 1, command = Order)
+btn.place(x = 490, y = 727)
+
+window.mainloop()
