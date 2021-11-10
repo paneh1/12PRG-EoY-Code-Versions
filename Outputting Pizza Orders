@@ -1,0 +1,58 @@
+#New Window to show output
+def Order():
+    #Creates new window
+    NewWind = Toplevel(window)
+    NewWind.geometry('890x550')
+    NewWind.configure(bg = '#ffe09c')
+    NewWind.resizable(0, 0)
+
+    #Error check for input boxes
+    if (CustName.get() == ""):
+        NameError = Label(window, text = "Customer name is invalid, please try again.", font = 'Calibrii 10', bg = '#ffe09c')
+        NameError.place(x = 30, y = 765)
+        NewWind.withdraw()
+    
+
+    #Prints Title labels on new window
+    PurgName2 = Label(NewWind, text = "Purgatory's Pizza", font = "Calibri 15", bg = '#ffe09c')
+    PurgName2.place(x = 10, y = 12)
+
+    #Outputs Date of order in input box
+    invDate = datetime.now()
+    LblDate = Label(NewWind, text = "Date of order", font = 'Calibri 13', bg = '#ffe09c')
+    LblDate.place(x = 20, y = 50)
+    OrderDate = Entry(NewWind, width = 25, font = 'Calibri 12')
+    OrderDate.place(x = 153, y = 50)
+    OrderDate.insert(END, "{}/{}/{}".format(invDate.day, invDate.month, invDate.year))
+
+    #Outputs Customer name in input box
+    NameLbl = Label(NewWind, text = "Customer Name", font = "Calibri 13", bg = '#ffe09c')
+    NameLbl.place(x = 20, y = 90)
+    NameOut = Entry(NewWind, width = 25, font = "Calibri 12" )
+    NameOut.place(x = 153, y = 90)
+    NameOut.insert(END, str(CustName.get()))
+
+    #Outputs Address in input box
+    AddLbl = Label(NewWind, text = "Address", font = 'Calibri 13', bg = '#ffe09c')
+    AddLbl.place(x = 390, y = 50)
+    AddOut = Entry(NewWind, width = 25, font = 'Calibri 12')
+    AddOut.place(x = 515, y = 50)
+    AddOut.insert(END, str(Address.get()))
+
+    #Outputs Phone Numer in input box
+    PhonLbl = Label(NewWind, text = "Phone Number", font = 'Calibri 13', bg = '#ffe09c')
+    PhonLbl.place(x = 390, y = 90)
+    PhonOut = Entry(NewWind, width = 25, font = 'Calibri 12')
+    PhonOut.place(x = 515, y = 90)
+
+    #Pizzas Menu Label
+    MenuLbl = Label(NewWind, text = "PIZZA ORDER", font = 'Calibri 13', bg = '#ffe09c')
+    MenuLbl.place(x = 10, y = 130)
+
+    #Pizza 1 Output and price
+    Piz1Out = Entry(NewWind, width = 25, font = 'Calibri 12')
+    Piz1Out.place(x = 30, y = 170)
+    Piz1Out.insert(END, str(clicked.get()))
+
+    PizPriceOut = Entry(NewWind, width = 10, font = 'Calibri 12')
+    PizPriceOut.place(x = 260, y = 170)
