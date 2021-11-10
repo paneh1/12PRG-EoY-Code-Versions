@@ -1,0 +1,39 @@
+#Error check for delivery type
+    if (selected.get() == 0):
+        DelivError = Label(window, text = "Missing delivery type, please try again.", font = 'Callibri 10', bg = '#ffe09c')
+        DelivError.place(x = 80, y = 785)
+
+
+    #Error check for name and output
+    if (CustName.get() == ""):
+        NameError = Label(window, text = "Customer name is invalid, please try again.", font = 'Calibrii 10', bg = '#ffe09c')
+        NameError.place(x = 80, y = 820)
+        NewWind.withdraw()
+    else:
+        NameLbl = Label(NewWind, text = "Customer Name", font = "Calibri 13", bg = '#ffe09c')
+        NameLbl.place(x = 20, y = 90)
+        NameOut = Entry(NewWind, width = 25, font = "Calibri 12" )
+        NameOut.place(x = 153, y = 90)
+        NameOut.insert(END, str(CustName.get()))
+
+    #Error check for address and output
+    if (Address.get() == ""):
+        AddError = Label(window, text = "Address is invalid, please try again.", font = 'Callibri 10', bg = '#ffe09c')
+        AddError.place(x = 380, y = 785)
+    else: 
+        AddLbl = Label(NewWind, text = "Address", font = 'Calibri 13', bg = '#ffe09c')
+        AddLbl.place(x = 390, y = 50)
+        AddOut = Entry(NewWind, width = 25, font = 'Calibri 12')
+        AddOut.place(x = 515, y = 50)
+        AddOut.insert(END, str(Address.get()))
+
+    #Error check for phone number and output
+    if (PhonNum.get() == ""):
+        PhonError = Label(window, text = "Phone Number invalid, please try again.", font = 'Callibri 10', bg = '#ffe09c')
+        PhonError.place(x = 380, y = 820)
+    else:
+        PhonLbl = Label(NewWind, text = "Phone Number", font = 'Calibri 13', bg = '#ffe09c')
+        PhonLbl.place(x = 390, y = 90)
+        PhonOut = Entry(NewWind, width = 25, font = 'Calibri 12')
+        PhonOut.place(x = 515, y = 90)
+        PhonOut.insert(END, int(PhonNum.get()))
