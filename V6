@@ -1,4 +1,4 @@
-#This version has colourless buttons and has no logo
+#This version has colourless buttons and has no logo and lacks option to accept another order and some placements are changed (x and y placements)
 
 
 from tkinter import *
