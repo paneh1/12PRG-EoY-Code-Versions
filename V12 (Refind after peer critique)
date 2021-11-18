@@ -1,0 +1,332 @@
+from tkinter import *
+from datetime import datetime, timedelta
+
+#Establishes Menu window
+window = Tk()
+window.title("Purgatory's Pizza")
+window.geometry('700x900')
+window.configure(bg = '#ffe09c')
+
+#Initialising Constants
+RegPizzas = ["1 Pepperoni Pizza", "2 Hawaiian Pizza", "3 Cheese Pizza", "4 Chessier Pizza", "5 Seafood Pizza", "6 Veggie Pizza", "7 Meatlovers Pizza"]
+GourPizzas = ["8 Margherita Pizza", "9 Marinara Pizza", "10 Prosciutto e funghi", "11 Diavola Pizza", "12 Boscaiola Pizza"]
+Regular = 8.50
+Gourmet = 13.50
+DelivCharge = 3.00
+PickCharge = 0.00
+PizLogo = PhotoImage(file = 'C:/Users/OEM/Pictures/prg/Pizza.png')
+
+#Creates pizza restaurant logo
+PizLogo = PizLogo.subsample(4,4)
+canvas = Canvas(window, bg = '#ffe09c', highlightthickness = 0)
+canvas.create_image(0,1, anchor = NW, image = PizLogo) 
+canvas.place(x = 570, y =  3)
+
+#Prints headings and labels
+PurgName = Label(window, text = "PURGATORY'S PIZZA", font = 'Calibri 15', bg = '#ffe09c')
+PurgName.place(x = 20, y = 10)
+
+#Delivery Type labels and Radio buttons for delivery type
+DelivLbl = Label(window, text = "Method of delivery", font = 'Calibri 13', bg = '#ffe09c')
+DelivLbl.place(x = 45, y = 50)
+selected = IntVar()
+deliv = Radiobutton(window, text = "Delivery", font = 'Calibri 12', value = DelivCharge, bg = '#ffe09c', variable = selected)
+pickup = Radiobutton(window, text = "Pick-up", font = 'Calibri 12', value = 1, bg = '#ffe09c', variable = selected)
+deliv.place(x = 210, y = 50)
+pickup.place(x = 330, y = 50)
+
+#Customer name label and input
+CustLbl = Label(window, text = "Customer Name", font = 'Calibri 13', bg = '#ffe09c')
+CustLbl.place(x = 45, y = 85)
+CustName = Entry(window, font = 'Calibri 11', width = 40)
+CustName.place(x = 210, y = 89)
+
+#Address label and input
+AddLbl = Label(window, text = 'Address', font = 'Calibri 13', bg = '#ffe09c')
+AddLbl.place(x = 45, y = 127)
+Address = Entry(window, font = 'Calibri 11', width = 40)
+Address.place(x = 210, y = 130)
+
+#Phone Number label and input
+NumLbl = Label(window, text = "Phone Number", font = 'Calibri 13', bg = '#ffe09c')
+NumLbl.place(x = 45, y = 169)
+PhonNum = Entry(window, font = 'Calibri 11', width = 40)
+PhonNum.place(x = 210, y = 171)
+
+#Outputs Regular Pizza Menu and Pizaa Menu Label
+PizzaLbl = Label(window, text = "Pizza Menu", font = 'Calibri 13', bg = '#ffe09c')
+PizzaLbl.place(x = 20, y = 210)
+maxmsg = Label(window, text = "MAXIMUM 5 PIZZAS PER ORDER", font = 'Calibri 10', bg = '#ffe09c')
+maxmsg.place(x = 20, y = 230)
+regmenu = Label(window, bg = '#ffe09c', font = 'Calibri 12', text = "Regular - $8.50"'\n''\n' "1 Pepperoni"'\n'"Pizza    "'\n''\n'"2 Hawaiian"'\n'"Pizza   " '\n''\n'"3 Cheese   "'\n'"Pizza   " '\n''\n'"4 Cheesier "'\n'"Pizza   " '\n''\n'"5 Seafood "'\n'"Pizza   " '\n''\n'"6 Veggie   "'\n'"Pizza   " '\n''\n'"    7 Meatlovers"'\n'"Pizza   ")
+regmenu.place(x = 45, y = 260)
+
+#Outputs Gourmet Pizza Menu
+gourmenu = Label(window, bg = '#ffe09c', font = 'Calibri 12', text = "Gourmet - $13.50"'\n''\n' "8 Margherita"'\n'"Pizza      "'\n''\n' "9 Marinara   "'\n'"Pizza      "'\n''\n' " 10 Prosciutto e"'\n'"Pizza    "'\n''\n' "11 Diavola      "'\n'"Pizza    "'\n''\n' "12 Boscaiola   "'\n'"Pizza    ")
+gourmenu.place(x = 300, y = 260)
+
+#Drop Down box for Pizzas 1, 2, 3, 4 and 5
+clicked = StringVar()
+clicked.set("Select Pizza")
+Piz1 = OptionMenu(window, clicked, "1 Pepperoni Pizza", "2 Hawaiian Pizza", "3 Cheese Pizza", "4 Chessier Pizza", "5 Seafood Pizza", "6 Veggie Pizza", "7 Meatlovers Pizza", "8 Margherita Pizza", "9 Marinara Pizza", "10 Prosciutto e funghi", "11 Diavola Pizza", "12 Boscaiola Pizza")
+Piz1.place(x = 520, y = 280)
+
+clicked2 = StringVar()
+clicked2.set("Select Pizza")
+Piz2 = OptionMenu(window, clicked2, "1 Pepperoni Pizza", "2 Hawaiian Pizza", "3 Cheese Pizza", "4 Chessier Pizza", "5 Seafood Pizza", "6 Veggie Pizza", "7 Meatlovers Pizza", "8 Margherita Pizza", "9 Marinara Pizza", "10 Prosciutto e funghi", "11 Diavola Pizza", "12 Boscaiola Pizza")
+Piz2.place(x = 520, y = 350)
+
+clicked3 = StringVar()
+clicked3.set("Select Pizza")
+Piz3 = OptionMenu(window, clicked3, "1 Pepperoni Pizza", "2 Hawaiian Pizza", "3 Cheese Pizza", "4 Chessier Pizza", "5 Seafood Pizza", "6 Veggie Pizza", "7 Meatlovers Pizza", "8 Margherita Pizza", "9 Marinara Pizza", "10 Prosciutto e funghi", "11 Diavola Pizza", "12 Boscaiola Pizza")
+Piz3.place(x = 520, y = 420)
+
+clicked4 = StringVar()
+clicked4.set("Select Pizza")
+Piz4 = OptionMenu(window, clicked4, "1 Pepperoni Pizza", "2 Hawaiian Pizza", "3 Cheese Pizza", "4 Chessier Pizza", "5 Seafood Pizza", "6 Veggie Pizza", "7 Meatlovers Pizza", "8 Margherita Pizza", "9 Marinara Pizza", "10 Prosciutto e funghi", "11 Diavola Pizza", "12 Boscaiola Pizza")
+Piz4.place(x = 520, y = 490)
+
+clicked5 = StringVar()
+clicked5.set("Select Pizza")
+Piz5 = OptionMenu(window, clicked5, "1 Pepperoni Pizza", "2 Hawaiian Pizza", "3 Cheese Pizza", "4 Chessier Pizza", "5 Seafood Pizza", "6 Veggie Pizza", "7 Meatlovers Pizza", "8 Margherita Pizza", "9 Marinara Pizza", "10 Prosciutto e funghi", "11 Diavola Pizza", "12 Boscaiola Pizza")
+Piz5.place(x = 520, y = 560)
+
+#Button that cancels order
+ExitBut = Button(window, text = "Cancel Order", font = 'Calibri 13', width = 17, height = 1, command = window.destroy, bg = '#fcae4e')
+ExitBut.place(x = 265, y = 710)
+
+#Button that clears inputted information
+def clear():
+    CustName.delete(0, END)
+    Address.delete(0, END)
+    PhonNum.delete(0, END)
+
+Clear = Button(window, text = "Clear", font = 'Calibri 13', width = 17, heigh = 1, command = clear, bg = '#fcae4e')
+Clear.place(x = 40, y = 710)
+
+#New Window to show output
+def Order():
+    #Creates new window
+    NewWind = Toplevel(window)
+    NewWind.geometry('890x550')
+    NewWind.configure(bg = '#ffe09c')
+    NewWind.resizable(0, 0)
+
+    #Outputs Date of order in input box
+    invDate = datetime.now()
+    LblDate = Label(NewWind, text = "Date of order", font = 'Calibri 13', bg = '#ffe09c')
+    LblDate.place(x = 20, y = 50)
+    OrderDate = Entry(NewWind, width = 25, font = 'Calibri 12')
+    OrderDate.place(x = 153, y = 50)
+    OrderDate.insert(END, "{}/{}/{}".format(invDate.day, invDate.month, invDate.year))
+
+    #Creates image for second window
+    PizLogo2 = PizLogo.subsample(4,4)
+    canvas2 = Canvas(NewWind, bg = '#ffe09c', highlightthickness = 0)
+    canvas2.create_image(0,1, anchor=NW, image = PizLogo2) 
+    canvas2.place(x = 570,y = 3)
+
+    #Prints Title labels on new window
+    PurgName2 = Label(NewWind, text = "Purgatory's Pizza", font = "Calibri 15", bg = '#ffe09c')
+    PurgName2.place(x = 10, y = 12)
+
+    #Error check for delivery type, outputs error info and determines extra delivery charge 
+    if (selected.get() == 0):
+        DelivError = Label(window, text = "Missing delivery type, please try again.", font = 'Calibri 10', bg = '#ffe09c')
+        DelivError.place(x = 80, y = 785)
+        NewWind.withdraw()
+    elif (selected.get() == 1):
+        ExtraChrg = 0
+    else:
+        ExtraChrg = (selected.get())
+    
+    #Error check for name and output
+    if (CustName.get() == ""):
+        NameError = Label(window, text = "Customer name is invalid, please try again.", font = 'Calibrii 10', bg = '#ffe09c')
+        NameError.place(x = 80, y = 820)
+        NewWind.withdraw()
+    else:
+        NameLbl = Label(NewWind, text = "Customer Name", font = "Calibri 13", bg = '#ffe09c')
+        NameLbl.place(x = 20, y = 90)
+        NameOut = Entry(NewWind, width = 25, font = "Calibri 12" )
+        NameOut.place(x = 153, y = 90)
+        NameOut.insert(END, str(CustName.get()))
+
+    #Error check for address and output
+    if (selected.get() == DelivCharge):
+        if (Address.get() == ""):
+            AddError = Label(window, text = "Address is invalid, please try again.", font = 'Calibri 10', bg = '#ffe09c')
+            AddError.place(x = 380, y = 785)
+            NewWind.withdraw()
+        else: 
+            AddLbl = Label(NewWind, text = "Address", font = 'Calibri 13', bg = '#ffe09c')
+            AddLbl.place(x = 390, y = 50)
+            AddOut = Entry(NewWind, width = 25, font = 'Calibri 12')
+            AddOut.place(x = 515, y = 50)
+            AddOut.insert(END, str(Address.get()))
+
+
+    #Error check for phone number and output
+    if (selected.get() == DelivCharge):
+        if (PhonNum.get() == ""):
+            PhonError = Label(window, text = "Phone Number invalid, please try again.", font = 'Calibri 10', bg = '#ffe09c')
+            PhonError.place(x = 380, y = 820)
+            NewWind.withdraw()
+        else:
+            PhonLbl = Label(NewWind, text = "Phone Number", font = 'Calibri 13', bg = '#ffe09c')
+            PhonLbl.place(x = 390, y = 90)
+            PhonOut = Entry(NewWind, width = 25, font = 'Calibri 12')
+            PhonOut.place(x = 515, y = 90)
+            PhonOut.insert(END, (PhonNum.get()))
+
+    #Pizzas Menu Label
+    MenuLbl = Label(NewWind, text = "PIZZA ORDER", font = 'Calibri 13', bg = '#ffe09c')
+    MenuLbl.place(x = 10, y = 130)
+
+    #Determining pizza 1 price
+    if (clicked.get() == "Select Pizza"):
+        Piz1Price = 0
+    elif (clicked.get() in RegPizzas):
+        Piz1Price = Regular
+    elif (clicked.get() in GourPizzas):
+        Piz1Price = Gourmet
+
+    #Printing Pizza 1 type
+    Piz1Out = Entry(NewWind, width = 25, font = 'Calibri 12')
+    Piz1Out.place(x = 30, y = 170)
+    if (clicked.get() == "Select Pizza"):
+        Piz1Out.insert(END, "No pizza selected")
+    else:
+        Piz1Out.insert(END, str(clicked.get()))
+
+    #Printing pizza 1 price
+    PizPriceOut = Entry(NewWind, width = 10, font = 'Calibri 12')
+    PizPriceOut.place(x = 290, y = 170)
+    PizPriceOut.insert(END, '${:,.2f}'.format(Piz1Price))
+
+    #Determining pizza 2 price
+    if (clicked2.get() == "Select Pizza"):
+        Piz2Price = 0
+    elif (clicked2.get() in RegPizzas):
+        Piz2Price = Regular
+    elif (clicked2.get() in GourPizzas):
+        Piz2Price = Gourmet
+
+    #Printing Pizza 2 type
+    Piz2Out = Entry(NewWind, width = 25, font = 'Calibri 12')
+    Piz2Out.place(x = 30, y = 220)
+    if (clicked2.get() == "Select Pizza"):
+        Piz2Out.insert(END, "No pizza selected")
+    else:
+        Piz2Out.insert(END, str(clicked2.get()))
+ 
+    #Printing Pizza 2 price
+    Piz2PriceOut = Entry(NewWind, width = 10, font = 'Calibri 12')
+    Piz2PriceOut.place(x = 290, y = 220)
+    Piz2PriceOut.insert(END, '${:,.2f}'.format(Piz2Price))
+
+    #Determining pizza 3 price
+    if (clicked3.get() == "Select Pizza"):
+        Piz3Price = 0
+    elif (clicked3.get() in RegPizzas):
+        Piz3Price = Regular
+    elif (clicked3.get() in GourPizzas):
+        Piz3Price = Gourmet
+
+    #Printing Pizza 3 type
+    Piz3Out = Entry(NewWind, width = 25, font = 'Calibri 12')
+    Piz3Out.place(x = 30, y = 270)
+    if (clicked3.get() == "Select Pizza"):
+        Piz3Out.insert(END, "No pizza selected")
+    else:
+        Piz3Out.insert(END, str(clicked3.get()))
+
+    #Printing pizza 3 price
+    Piz3PriceOut = Entry(NewWind, width = 10, font = 'Calibri 12')
+    Piz3PriceOut.place(x = 290, y = 270)
+    Piz3PriceOut.insert(END, '${:,.2f}'.format(Piz3Price))
+
+    #Determining pizza 4 price
+    if (clicked4.get() == "Select Pizza"):
+        Piz4Price = 0
+    elif (clicked4.get() in RegPizzas):
+        Piz4Price = Regular
+    elif (clicked4.get() in GourPizzas):
+        Piz4Price = Gourmet
+
+    #Printing Pizza 4 type
+    Piz4Out = Entry(NewWind, width = 25, font = 'Calibri 12')
+    Piz4Out.place(x = 430, y = 170)
+    if (clicked4.get() == "Select Pizza"):
+        Piz4Out.insert(END, "No pizza selected")
+    else:
+        Piz4Out.insert(END, str(clicked4.get()))
+
+    #Printing pizza 4 price
+    Piz4PriceOut = Entry(NewWind, width = 10, font = 'Calibri 12')
+    Piz4PriceOut.place(x = 690, y = 170)
+    Piz4PriceOut.insert(END, '${:,.2f}'.format(Piz4Price))
+
+    #Determining pizza 5 price
+    if (clicked5.get() == "Select Pizza"):
+        Piz5Price = 0
+    elif (clicked5.get() in RegPizzas):
+        Piz5Price = Regular
+    elif (clicked5.get() in GourPizzas):
+        Piz5Price = Gourmet
+
+    #Printing Pizza 5 type
+    Piz5Out = Entry(NewWind, width = 25, font = 'Calibri 12')
+    Piz5Out.place(x = 430, y = 220)
+    if (clicked5.get() == "Select Pizza"):
+        Piz5Out.insert(END, "No pizza selected")
+    else:
+        Piz5Out.insert(END, str(clicked5.get()))
+
+    #Printing pizza 5 price
+    Piz5PriceOut = Entry(NewWind, width = 10, font = 'Calibri 12')
+    Piz5PriceOut.place(x = 690, y = 220)
+    Piz5PriceOut.insert(END, '${:,.2f}'.format(Piz5Price))
+
+    #Outputs Delivery charge label and price
+    DelivLbl = Label(NewWind, text = "Delivery Charge", font = 'Calibri 13', bg = '#ffe09c')
+    DelivLbl.place(x = 45, y = 320)
+
+    ExtraChrgOut = Entry(NewWind, width = 20, font = 'Calibri 12')
+    ExtraChrgOut.place(x = 195, y = 322)
+    ExtraChrgOut.insert(END, '${:,.2f}'.format(ExtraChrg))
+
+    #Outputs Total charge label and price
+    TotLbl = Label(NewWind, text = "Total Charge Price", font = "Calibri 13", bg = '#ffe09c')
+    TotLbl.place(x = 415, y = 320)
+
+    TotCharge = (Piz1Price + Piz2Price + Piz3Price + Piz4Price + Piz5Price + ExtraChrg)
+
+    TotChrgOut = Entry(NewWind, width = 20, font = 'Calibri 12')
+    TotChrgOut.place(x = 585, y = 322)
+    TotChrgOut.insert(END, '${:,.2f}'.format(TotCharge))
+
+    #Button that cancels order
+    ExitBut2 = Button(NewWind, text = "Cancel Order", font = 'Calibri 13', width = 30, height = 1, command = window.destroy, bg = '#fcae4e')
+    ExitBut2.place(x = 110, y = 400)
+
+    #Button that accepts another order
+    def anotherorder():
+        NewWind.destroy()
+        CustName.delete(0,END)
+        Address.delete(0,END)
+        PhonNum.delete(0,END)
+        clicked.set("Select Pizza")
+        clicked2.set("Select Pizza")
+        clicked3.set("Select Pizza")
+        clicked4.set("Select Pizza")
+        clicked5.set("Select Pizza")
+
+    AcceptAnother = Button(NewWind, text = "Accept another order", font = 'Calibri 13', bg = '#fcae4e', width = 30, height = 1, command = anotherorder)
+    AcceptAnother.place(x = 440, y = 400)
+
+#Button for continuing order
+btn = Button(window, text = "Proceed", font = 'Calibri 13', width = 17, height = 1, command = Order, bg = '#fcae4e')
+btn.place(x = 490, y = 710)
+
+window.mainloop()
